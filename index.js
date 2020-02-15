@@ -5,7 +5,7 @@ const https = require("https");
 const app = express();
 var http = require("http").createServer(app);
 var io = require("socket.io")(http);
-const port = 8000;
+const port = process.env.PORT || 8000;
 
 app.engine("html", mustacheExpress());
 
