@@ -4,7 +4,7 @@
   "description": "Interface pour le visionnage de livre numérique en ligne",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "run": "node index.js"
   },
   "repository": {
     "type": "git",
