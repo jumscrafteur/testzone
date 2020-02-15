@@ -1,5 +1,5 @@
 {
-  "name": "epub-ihm",
+  "name": "testzone",
   "version": "0.0.1",
   "description": "Interface pour le visionnage de livre numérique en ligne",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jumscrafteur/Epub-IHM.git"
+    "url": "git+https://github.com/jumscrafteur/testzone.git"
   },
   "author": "Jumscrafteur",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jumscrafteur/Epub-IHM/issues"
+    "url": "https://github.com/jumscrafteur/testzone/issues"
   },
-  "homepage": "https://github.com/jumscrafteur/Epub-IHM#readme",
+  "homepage": "https://github.com/jumscrafteur/testzone#readme",
   "dependencies": {
     "epub": "^1.2.0",
     "express": "^4.17.1",
