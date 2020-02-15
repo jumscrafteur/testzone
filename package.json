@@ -1,0 +1,25 @@
+{
+  "name": "epub-ihm",
+  "version": "0.0.1",
+  "description": "Interface pour le visionnage de livre numérique en ligne",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jumscrafteur/Epub-IHM.git"
+  },
+  "author": "Jumscrafteur",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jumscrafteur/Epub-IHM/issues"
+  },
+  "homepage": "https://github.com/jumscrafteur/Epub-IHM#readme",
+  "dependencies": {
+    "epub": "^1.2.0",
+    "express": "^4.17.1",
+    "mustache-express": "^1.3.0",
+    "socket.io": "^2.3.0"
+  }
+}

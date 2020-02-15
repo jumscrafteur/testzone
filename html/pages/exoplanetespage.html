@@ -1,0 +1,24 @@
+﻿{{#exoplanetespage.data}}
+
+<div class="card my-3">
+
+    <div class="card-header">
+        Exoplanète : {{pl_name}}
+    </div>
+
+    <div class="card-body">
+        <h5 class="card-title">Étoile : {{pl_hostname}}</h5>
+        <p class="card-text">Rayon exoplanète (RJ) : {{pl_radj}}</p>
+        <p class="card-text">Période orbitale (Jours) : {{pl_orbper}}</p>
+    </div>
+</div>
+{{/exoplanetespage.data}}
+
+
+{{#exoplanetespage.before.isAPage}}
+<a class="btn btn-primary" href="/exoplanetes?page={{exoplanetespage.before.page}}" role="button">Avant</a>
+{{/exoplanetespage.before.isAPage}}
+
+{{#exoplanetespage.after.isAPage}}
+<a class="btn btn-primary float-right" href="/exoplanetes?page={{exoplanetespage.after.page}}" role="button">Après</a>
+{{/exoplanetespage.after.isAPage}}

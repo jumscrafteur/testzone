@@ -1,0 +1,8 @@
+﻿<script>
+    document.getElementById("submit").addEventListener("click", redirect)
+
+    function redirect() {
+        console.log(document.getElementById("pseudo").value)
+        window.location.replace("/tchat?pseudo=" + document.getElementById("pseudo").value)
+    }
+</script>

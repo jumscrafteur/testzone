@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>{{head.title}}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <style>
+        html {
+            position: relative;
+            min-height: 100%;
+            padding-bottom: 5rem;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item {{#head.home}} active {{/head.home}}">
+                    <a class="nav-link" href="/">
+                        Home {{#head.home}}
+                        <span class="sr-only">(current)</span>{{/head.home}}
+                    </a>
+                </li>
+                <li class="nav-item {{#head.utilite}} active {{/head.utilite}}">
+                    <a class="nav-link" href="/utilite">
+                        Utilité {{#head.utilite}}
+                        <span class="sr-only">(current)</span>{{/head.utilite}}
+                    </a>
+                </li>
+                <li class="nav-item {{#head.exoplanetes}} active {{/head.exoplanetes}}">
+                    <a class="nav-link" href="/exoplanetes?page=1">
+                        Exoplanètes {{#head.exoplanetes}}
+                        <span class="sr-only">(current)</span>{{/head.exoplanetes}}
+                    </a>
+                </li>
+                <li class="nav-item {{#head.tchatpage}} active {{/head.tchatpage}}">
+                    <a class="nav-link" href="/tchat">
+                        Tchat {{#head.tchatpage}}
+                        <span class="sr-only">(current)</span>{{/head.tchatpage}}
+                    </a>
+                </li>
+                <li class="nav-item {{#head.sandbox}} active {{/head.sandbox}}">
+                    <a class="nav-link" href="/42">
+                        Sandbox㊙️ {{#head.sandbox}}
+                        <span class="sr-only">(current)</span>{{/head.sandbox}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        {{#homepage}}{{>pages/homepage}}{{/homepage}}
+        {{#errorpage}}{{>pages/errorpage}}{{/errorpage}}
+        {{#usepage}}{{>pages/usepage}}{{/usepage}}
+        {{#exoplanetespage}}{{>pages/exoplanetespage}}{{/exoplanetespage}}
+        {{#tchatpage}}{{>pages/tchatpage}}{{/tchatpage}}
+        {{#sandbox}}{{>pages/sandbox}}{{/sandbox}}
+    </div>
+
+    <footer class="footer mt-auto py-3 bg-dark">
+
+        <div class="container">
+            <span class="text-muted">Made with ❤️ by Jums</span>
+        </div>
+    </footer>
+    {{>scripts/bootstrap}}
+
+</body>
+{{#tchatpage}}{{>scripts/socketio}}{{/tchatpage}}
+{{^tchatpage.pseudo}}{{>scripts/redirect}}{{/tchatpage.pseudo}}
+
+</html>
