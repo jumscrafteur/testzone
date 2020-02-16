@@ -1,6 +1,8 @@
 ﻿const express = require("express");
 const mustacheExpress = require("mustache-express");
 const https = require("https");
+const dotenv = require("dotenv");
+dotenv.config();
 
 const app = express();
 var http = require("http").createServer(app);
@@ -14,7 +16,7 @@ app.set("views", __dirname + "/html");
 
 app.use("/img", express.static(__dirname + "/img"));
 
-app.get("/", function (req, res) {
+app.get("/", function(req, res) {
   var data = {
     head: {
       title: "Home",
@@ -27,7 +29,7 @@ app.get("/", function (req, res) {
   res.render("master", data);
 });
 
-app.get("/utilite", function (req, res) {
+app.get("/utilite", function(req, res) {
   var data = {
     head: {
       title: "Utilité",
@@ -45,7 +47,7 @@ app.get("/utilite", function (req, res) {
   res.render("master", data);
 });
 
-app.get("/etude", function (req, res) {
+app.get("/etude", function(req, res) {
   var data = {
     head: {
       title: "Utilité",
@@ -63,7 +65,7 @@ app.get("/etude", function (req, res) {
   res.render("master", data);
 });
 
-app.get("/exoplanetes", function (req, res) {
+app.get("/exoplanetes", function(req, res) {
   pageIndex = parseInt(req.query.page);
 
   if (pageIndex >= 0 && pageIndex <= 825 && Number.isInteger(pageIndex)) {
@@ -118,14 +120,15 @@ app.get("/exoplanetes", function (req, res) {
       },
       errorpage: {
         title: "Page Introuvable",
-        text: "Il semble que cette page n'existe pas ou qu'elle n'est pas accessible pour le moment 😭"
+        text:
+          "Il semble que cette page n'existe pas ou qu'elle n'est pas accessible pour le moment 😭"
       }
     };
     res.render("master", dataPage);
   }
 });
 
-app.get("/tchat", function (req, res) {
+app.get("/tchat", function(req, res) {
   var data = {
     head: {
       title: "Tchat",
@@ -142,7 +145,7 @@ app.get("/tchat", function (req, res) {
   res.render("master", data);
 });
 
-app.get("/42", function (req, res) {
+app.get("/42", function(req, res) {
   var data = {
     head: {
       title: "⚠️㊙️☣️",
@@ -153,22 +156,23 @@ app.get("/42", function (req, res) {
   res.render("master", data);
 });
 
-app.get("/*", function (req, res) {
+app.get("/*", function(req, res) {
   var data = {
     head: {
       title: "Error"
     },
     errorpage: {
       title: "Page Introuvable",
-      text: "Il semble que cette page n'existe pas ou qu'elle n'est pas accessible pour le moment 😭"
+      text:
+        "Il semble que cette page n'existe pas ou qu'elle n'est pas accessible pour le moment 😭"
     }
   };
   res.render("master", data);
 });
 
-io.on('connection', function (socket) {
-  socket.on('chat message', function (msg) {
-    io.emit('chat message', msg);
+io.on("connection", function(socket) {
+  socket.on("chat message", function(msg) {
+    io.emit("chat message", msg);
   });
 });
 
