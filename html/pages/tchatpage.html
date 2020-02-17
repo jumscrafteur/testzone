@@ -1,29 +1,91 @@
-﻿{{#tchatpage.pseudo}}
+﻿<!-- Avec pseudo -->
 
-<div class="card mt-3">
+{{#tchatpage.pseudo}}
 
-  <div class="card-header">Tchat
-  </div>
-  <ul class="list-group list-group-flush" id="messages">
-  </ul>
+<div class="card my-3">
+
+  <div class="card-header">Tchat</div>
+  <ul class="list-group list-group-flush" id="messages"></ul>
 </div>
-
-<form action="" class="my-5">
+<small class=" typing font-weight-bold " id="actif"></small>
+<form action="" class="my-3">
 
   <div class="form-row">
 
     <div class="col-10">
       <label for="m" class="sr-only">{{tchatpage.pseudo}} : </label>
-      <input type="text" class="form-control" id="m" autocomplete="off"
-        placeholder="Envoyer un message en tant que : {{tchatpage.pseudo}}">
-
+      <input type="text" class="form-control" id="m" autocomplete="off" placeholder="{{tchatpage.pseudo}} : " />
     </div>
 
-    <button class="btn btn-primary col-2" value="{{tchatpage.pseudo}}" id="submit">Send</button>
+    <button class="btn btn-primary col-2" value="{{tchatpage.pseudo}}" id="submit">
+      Send
+    </button>
   </div>
 </form>
 
+<style>
+  .typing {
+
+    background: linear-gradient(2deg, #b3b3b3, #ececec);
+    background-size: 400% 400%;
+
+    -webkit-animation: typingAnimation 5s infinite;
+    -moz-animation: typingAnimation 5s infinite;
+    animation: typingAnimation 5s infinite;
+
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  @-webkit-keyframes typingAnimation {
+    0% {
+      background-position: 56% 0%
+    }
+
+    50% {
+      background-position: 45% 100%
+    }
+
+    100% {
+      background-position: 56% 0%
+    }
+  }
+
+  @-moz-keyframes typingAnimation {
+    0% {
+      background-position: 56% 0%
+    }
+
+    50% {
+      background-position: 45% 100%
+    }
+
+    100% {
+      background-position: 56% 0%
+    }
+  }
+
+  @keyframes typingAnimation {
+    0% {
+      background-position: 56% 0%
+    }
+
+    50% {
+      background-position: 45% 100%
+    }
+
+    100% {
+      background-position: 56% 0%
+    }
+  }
+</style>
+
 {{/tchatpage.pseudo}}
+
+<!-- Sans pseudo -->
+
 {{^tchatpage.pseudo}}
 <h1 class="mb-0 mt-3">Tu n'as pas de pseudo ?</h1>
 <p>Choisis en un avant de parler</p>
@@ -33,10 +95,12 @@
 
     <div class="col-10">
       <label for="pseudo" class="sr-only">Pseudo</label>
-      <input type="text" class="form-control" id="pseudo" placeholder="Pseudo">
+      <input type="text" class="form-control" id="pseudo" placeholder="Pseudo" />
     </div>
 
-    <button type="submit" class="btn btn-primary col-2" id="submit">Submit</button>
+    <button type="submit" class="btn btn-primary col-2" id="submit">
+      Submit
+    </button>
   </div>
 </form>
 {{/tchatpage.pseudo}}

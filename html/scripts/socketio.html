@@ -7,9 +7,33 @@
             $('#m').val('');
             return false;
         });
+        $("#m").focusin(function () {
+            // $("#actif").addClass("typing");
+            socket.emit('chat typing add', $('#submit').val());
+        });
+        $("#m").focusout(function () {
+            // $("#actif").removeClass("typing");
+            socket.emit('chat typing delete');
+        });
         socket.on('chat message', function (msg) {
             $('#messages').append($('<li>').addClass("list-group-item").text(msg));
             window.scrollTo(0, document.body.scrollHeight);
         });
+
+        socket.on('chat typing', function (actif) {
+            if (actif.length == 1) {
+                $('#actif').text(actif.join(" ,") + " est en train de parler");
+            } else if (actif.length > 0) {
+                $('#actif').text(actif.join(" ,") + " sont en train de parler");
+
+            } else {
+                $('#actif').text("  ");
+            }
+
+
+
+        });
+
+
     });
 </script>

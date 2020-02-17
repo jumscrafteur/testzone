@@ -10,6 +10,7 @@ const app = express();
 var http = require("http").createServer(app);
 var io = require("socket.io")(http);
 const port = process.env.PORT || env_port;
+var typingArray = []
 
 app.engine("html", mustacheExpress());
 
@@ -18,14 +19,14 @@ app.set("views", __dirname + "/html");
 
 app.use("/img", express.static(__dirname + "/img"));
 
-mongoose
-  .connect(
-    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@testzone-2rfnk.mongodb.net/test?retryWrites=true&w=majority`, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    }
-  )
-  .catch(error => console.error(error));
+// mongoose
+//   .connect(
+//     `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@testzone-2rfnk.mongodb.net/test?retryWrites=true&w=majority`, {
+//       useNewUrlParser: true,
+//       useUnifiedTopology: true
+//     }
+//   )
+//   .catch(error => console.error(error));
 
 app.get("/", function (req, res) {
   var data = {
@@ -180,8 +181,37 @@ app.get("/*", function (req, res) {
 });
 
 io.on("connection", function (socket) {
+  io.emit("chat typing", typingArray)
+
   socket.on("chat message", function (msg) {
     io.emit("chat message", msg);
+  });
+
+  socket.on("chat typing add", function (pseudo) {
+    socket.username = pseudo
+    typingArray.push(pseudo)
+    io.emit("chat typing", typingArray);
+    console.log(typingArray)
+  });
+
+  socket.on("chat typing delete", function () {
+    for (let i = 0; i < typingArray.length; i++) {
+      if (typingArray[i] == socket.username) {
+        typingArray.splice(i, 1)
+      }
+    }
+    io.emit("chat typing", typingArray);
+    console.log(typingArray)
+  });
+
+  socket.on('disconnect', function () {
+    for (let i = 0; i < typingArray.length; i++) {
+      if (typingArray[i] == socket.username) {
+        typingArray.splice(i, 1)
+      }
+    }
+    io.emit("chat typing", typingArray);
+    console.log(typingArray)
   });
 });
 
