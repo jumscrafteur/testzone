@@ -22,11 +22,11 @@ app.use("/", Routes);
 app.set("view engine", "html");
 app.set("views", __dirname + "/html");
 
-app.use("/img", express.static(__dirname + "/img"));
+app.use("img", express.static(__dirname + "/img"));
 
 mongoose
   .connect(
-    `mongodb+srv://${db_user}:${db_password}@users-cfoet.mongodb.net/test?retryWrites=true&w=majority`, {
+    `mongodb+srv://${process.env.DB_USER ||db_user}:${process.env.DB_PASSWORD || db_password}@users-cfoet.mongodb.net/test?retryWrites=true&w=majority`, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     }
