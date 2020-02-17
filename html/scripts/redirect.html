@@ -2,7 +2,11 @@
     document.getElementById("submit").addEventListener("click", redirect)
 
     function redirect() {
-        console.log(document.getElementById("pseudo").value)
-        window.location.replace("/tchat?pseudo=" + document.getElementById("pseudo").value)
+        $('form').submit(function (e) {
+            e.preventDefault();
+            console.log("hey")
+            window.location.href = "/tchat?pseudo=" + document.getElementById("pseudo").value
+
+        });
     }
 </script>

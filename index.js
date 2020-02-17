@@ -40,10 +40,6 @@ db.once('open', function () {
   console.log("Connexion à la base OK");
 });
 
-const changeStream = Messages.watch();
-
-
-
 io.on("connection", function (socket) {
   io.emit("chat typing", typingArray);
 
