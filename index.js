@@ -191,7 +191,6 @@ io.on("connection", function (socket) {
     socket.username = pseudo
     typingArray.push(pseudo)
     io.emit("chat typing", typingArray);
-    console.log(typingArray)
   });
 
   socket.on("chat typing delete", function () {
@@ -201,7 +200,6 @@ io.on("connection", function (socket) {
       }
     }
     io.emit("chat typing", typingArray);
-    console.log(typingArray)
   });
 
   socket.on('disconnect', function () {
@@ -211,7 +209,6 @@ io.on("connection", function (socket) {
       }
     }
     io.emit("chat typing", typingArray);
-    console.log(typingArray)
   });
 });
 

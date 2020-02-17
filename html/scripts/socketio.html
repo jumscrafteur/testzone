@@ -8,16 +8,14 @@
             return false;
         });
         $("#m").focusin(function () {
-            // $("#actif").addClass("typing");
             socket.emit('chat typing add', $('#submit').val());
         });
         $("#m").focusout(function () {
-            // $("#actif").removeClass("typing");
             socket.emit('chat typing delete');
         });
         socket.on('chat message', function (msg) {
             $('#messages').append($('<li>').addClass("list-group-item").text(msg));
-            window.scrollTo(0, document.body.scrollHeight);
+            $(".list-group").scrollTop(document.getElementById("messages").scrollHeight);
         });
 
         socket.on('chat typing', function (actif) {

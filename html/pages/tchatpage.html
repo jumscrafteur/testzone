@@ -2,13 +2,13 @@
 
 {{#tchatpage.pseudo}}
 
-<div class="card my-3">
+<div class="card my-1">
 
   <div class="card-header">Tchat</div>
   <ul class="list-group list-group-flush" id="messages"></ul>
 </div>
 <small class=" typing font-weight-bold " id="actif"></small>
-<form action="" class="my-3">
+<form action="" class="mt-1">
 
   <div class="form-row">
 
@@ -24,7 +24,13 @@
 </form>
 
 <style>
+  .list-group {
+    height: 50vh;
+    overflow-y: scroll;
+  }
+
   .typing {
+    margin: 0 -20px 0 0;
 
     background: linear-gradient(2deg, #b3b3b3, #ececec);
     background-size: 400% 400%;
